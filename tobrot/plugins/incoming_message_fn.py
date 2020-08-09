@@ -219,7 +219,7 @@ async def g_yt_playlist(client, message):
         if message.command[1] == "gdrive":
             G_DRIVE = True
     if 'youtube.com/playlist' in message.reply_to_message.text:
-        i_m_sefg = await message.reply_text("💬 Trying to downloading....", quote=True)
+        i_m_sefg = await message.reply_text("💬 Trying to download....", quote=True)
         await yt_playlist_downg(message.reply_to_message, i_m_sefg, G_DRIVE)
     
     else:
