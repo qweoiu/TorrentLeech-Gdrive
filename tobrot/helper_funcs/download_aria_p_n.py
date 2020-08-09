@@ -229,18 +229,17 @@ async def call_apropriate_function(
             message_id = final_response[key_f_res_se]
             channel_id = str(sent_message_to_update_tg_p.chat.id)[4:]
             private_link = f"https://t.me/c/{channel_id}/{message_id}"
-            message_to_send += "👉 <a href='"
+            message_to_send += "📁 <a href='"
             message_to_send += private_link
             message_to_send += "'>"
             message_to_send += local_file_name
             message_to_send += "</a>"
             message_to_send += "\n"
         if message_to_send != "":
-            mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
-            message_to_send = mention_req_user + message_to_send
-            message_to_send = message_to_send + "\n\n" + "#uploads"
+            mention_req_user = f"<a href='tg://user?id={user_id}'>{user_id} </a>Files\n\n"
+            message_to_send = mention_req_user + message_to_send 
         else:
-            message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+            message_to_send = "⛔<b>FAILED</b> to upload files."
         await user_message.reply_text(
             text=message_to_send,
             quote=True,
@@ -397,18 +396,18 @@ async def call_apropriate_function_t(
         message_id = final_response[key_f_res_se]
         channel_id = str(AUTH_CHANNEL)[4:]
         private_link = f"https://t.me/c/{channel_id}/{message_id}"
-        message_to_send += "👉 <a href='"
+        message_to_send += "📁 <a href='"
         message_to_send += private_link
         message_to_send += "'>"
         message_to_send += local_file_name
         message_to_send += "</a>"
         message_to_send += "\n"
     if message_to_send != "":
-        mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
+        mention_req_user = f"<a href='tg://user?id={user_id}'>{user_id} </a>Files\n\n"
         message_to_send = mention_req_user + message_to_send
         message_to_send = message_to_send + "\n\n" + "#uploads"
     else:
-        message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+        message_to_send = "⛔<b>FAILED</b> to upload files."
     await sent_message_to_update_tg_p.reply_to_message.reply_text(
         text=message_to_send,
         quote=True,
@@ -453,7 +452,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 msg += f"\nGID: <code>{gid}</code>"
                 inline_keyboard = []
                 ikeyboard = []
-                ikeyboard.append(InlineKeyboardButton("Cancel 🚫", callback_data=(f"cancel {gid}").encode("UTF-8")))
+                ikeyboard.append(InlineKeyboardButton("Cancel ❌", callback_data=(f"cancel {gid}").encode("UTF-8")))
                 inline_keyboard.append(ikeyboard)
                 reply_markup = InlineKeyboardMarkup(inline_keyboard)
                 #msg += reply_markup
